@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄金10指标历史记录</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            background: linear-gradient(180deg, #10131a 0%, #0b0d10 45%);
+            color: #edf2f7;
+        }
+
+        .value-mono {
+            font-family: 'Inter', monospace;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .archive-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 100%), #171a20;
+            border: 1px solid #313946;
+            border-radius: 8px;
+            transition: border-color 0.18s ease, transform 0.18s ease;
+        }
+
+        .archive-card:hover {
+            border-color: rgba(99, 179, 237, 0.55);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen px-4 py-8 md:px-8">
+    <main class="mx-auto max-w-5xl">
+        <header class="mb-8 border-b border-[#313946] pb-6">
+            <div class="mb-3 flex flex-wrap items-center gap-3">
+                <span class="rounded-md bg-[#252b35] px-2.5 py-1 text-xs font-bold uppercase tracking-[0.18em] text-slate-300">Gold Regime Archive</span>
+                <a class="rounded-md border border-[#3b4554] bg-[#171a20] px-2.5 py-1 text-xs font-bold text-slate-300 transition hover:border-slate-400 hover:text-white" href="/index.html">返回最新</a>
+            </div>
+            <h1 class="text-3xl font-extrabold tracking-tight text-white md:text-5xl">黄金10指标历史记录</h1>
+            <p class="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
+                每次生成新的分析页面后，保留一个按日期命名的 HTML 快照，方便直接从网页回看当时的模型状态、概率和指标解释。
+            </p>
+        </header>
+
+        <section class="grid grid-cols-1 gap-4">
+            <a class="archive-card block p-5" href="/reports/2026-06-10.html">
+                <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-10 · Calgary Session</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Liquidation Cascade with Oversold Rebound Risk</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">连锁清算进行中，但进入超卖反抽风险区；主路径为低位震荡 + 技术性反抽。</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3 text-center md:min-w-[320px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">$4,118.80</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">置信度</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">78/100</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">主路径</div>
+                            <div class="mt-1 text-lg font-extrabold text-cyan-200 value-mono">45%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a class="archive-card block p-5" href="/reports/2026-06-09.html">
+                <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-09 · Calgary Session</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Systemic Liquidation Cascade</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">系统性流动性枯竭；延续寻底/弱势摩擦概率较高。</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3 text-center md:min-w-[320px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">$4,264.58</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">风险评分</div>
+                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">96/100</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">主路径</div>
+                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">90%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </main>
+</body>
+</html>
