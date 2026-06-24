@@ -146,9 +146,9 @@
                         <div class="mt-1 text-xs font-bold text-amber-300">判断当前市场状态</div>
                     </div>
                     <div class="card metric-card">
-                        <div class="text-xs uppercase tracking-wider text-slate-500">未来10日第一情景概率</div>
-                        <div class="mt-2 text-3xl font-extrabold text-red-300 value-mono">50%</div>
-                        <div class="mt-1 text-xs font-bold text-red-300">破位后低位换手</div>
+                        <div class="text-xs uppercase tracking-wider text-slate-500">未来1-2周主结论概率</div>
+                        <div class="mt-2 text-3xl font-extrabold text-red-300 value-mono">65%</div>
+                        <div class="mt-1 text-xs font-bold text-red-300">小幅反抽后继续承压</div>
                     </div>
                 </div>
             </div>
@@ -166,9 +166,9 @@
 
                 <div class="space-y-5">
                     <div>
-                        <div class="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500">结论 1: 未来 1-2 周 | 破位后低位换手 / 超卖反抽测试概率较高</div>
+                        <div class="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500">结论 1: 未来 1-2 周 | 小幅反抽后继续承压概率较高</div>
                         <p class="text-sm leading-7 text-slate-300">
-                            <strong class="text-amber-300">未来 1-2 周更可能处在破位后的低位换手 / 超卖反抽测试结构，第一情景概率约 50%。</strong>
+                            <strong class="text-amber-300">模型主结论：未来 1-2 周更可能先出现技术性反抽或低位震荡，但反抽大概率乏力，随后继续承压回落，概率约 65%。</strong>
                             XAU/USD 实时参考约 <span class="font-extrabold text-white value-mono">$4,012.94</span>，
                             日内低点触及 <span class="font-extrabold text-white value-mono">$3,964.64</span>，
                             已经有效检验 <span class="font-extrabold text-white value-mono">$4,000</span> 心理关口。
@@ -232,30 +232,34 @@
             </aside>
         </section>
 
-        <section class="mb-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
-            <div class="card p-5">
-                <div class="mb-3 flex items-center justify-between gap-4">
-                    <span class="text-sm font-extrabold text-slate-200">破位后低位换手 / 超卖反抽测试</span>
-                    <span class="text-2xl font-extrabold text-red-300 value-mono">50%</span>
+        <section class="mb-8">
+            <div class="card p-5 md:p-6">
+                <div class="mb-4 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                    <div>
+                        <h3 class="text-lg font-extrabold text-white">未来 1-2 周明确主结论</h3>
+                        <p class="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Primary path probability</p>
+                    </div>
+                    <span class="w-fit badge badge-red">主结论概率: 65%</span>
                 </div>
-                <div class="path-bar"><div class="path-fill bg-red-400" style="width:50%"></div></div>
-                <p class="mt-3 text-xs leading-5 text-slate-500">第一情景概率，重点观察 $3,965-$4,000 能否收回并形成低位换手。</p>
-            </div>
-            <div class="card p-5">
-                <div class="mb-3 flex items-center justify-between gap-4">
-                    <span class="text-sm font-extrabold text-slate-200">跌破 $3,965 后清算延续</span>
-                    <span class="text-2xl font-extrabold text-red-300 value-mono">30%</span>
+
+                <div class="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_220px] lg:items-center">
+                    <div>
+                        <div class="text-xl font-extrabold text-red-200">小幅反抽后继续承压回落</div>
+                        <p class="mt-3 text-sm leading-7 text-slate-400">
+                            这不是看涨结论。当前超卖会提高技术性反抽概率，但美元、实际利率、COT、期权保护和量价状态仍不支持趋势反转。
+                            因此主路径是：先尝试反抽或低位震荡，若不能有效站稳 <span class="font-extrabold text-white value-mono">$4,050-$4,120</span>，
+                            后续仍偏向回落并重新测试 <span class="font-extrabold text-white value-mono">$3,965-$4,000</span> 区域。
+                        </p>
+                    </div>
+                    <div>
+                        <div class="mb-2 flex items-center justify-between gap-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Probability</span>
+                            <span class="text-3xl font-extrabold text-red-300 value-mono">65%</span>
+                        </div>
+                        <div class="path-bar"><div class="path-fill bg-red-400" style="width:65%"></div></div>
+                        <p class="mt-3 text-xs leading-5 text-slate-500">这个百分比是对主路径的判断概率，不是状态识别置信度。</p>
+                    </div>
                 </div>
-                <div class="path-bar"><div class="path-fill bg-red-400" style="width:30%"></div></div>
-                <p class="mt-3 text-xs leading-5 text-slate-500">宏观压力和仓位清算未解除，跌破日内低点会扩大惯性下探。</p>
-            </div>
-            <div class="card p-5">
-                <div class="mb-3 flex items-center justify-between gap-4">
-                    <span class="text-sm font-extrabold text-slate-200">快速收复 $4,120-$4,150</span>
-                    <span class="text-2xl font-extrabold text-green-300 value-mono">20%</span>
-                </div>
-                <div class="path-bar"><div class="path-fill bg-green-300" style="width:20%"></div></div>
-                <p class="mt-3 text-xs leading-5 text-slate-500">需要价格重新站回破位区，同时美元和实际利率停止上行。</p>
             </div>
         </section>
 
