@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄金10指标状态看板 | 2026-06-24</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --panel: #171a20;
+            --panel-soft: #1e232c;
+            --line: #313946;
+            --text: #edf2f7;
+            --muted: #8e99aa;
+            --red: #f56565;
+            --amber: #f6ad55;
+            --cyan: #76e4f7;
+            --green: #68d391;
+            --blue: #63b3ed;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            background: linear-gradient(180deg, #10131a 0%, var(--bg) 44%, #080a0d 100%);
+            color: var(--text);
+        }
+
+        .value-mono {
+            font-family: 'Inter', monospace;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)), var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        .metric-card {
+            padding: 1.1rem;
+            transition: transform 0.18s ease, border-color 0.18s ease;
+        }
+
+        .metric-card:hover {
+            border-color: rgba(118, 228, 247, 0.48);
+            transform: translateY(-2px);
+        }
+
+        .badge {
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            padding: 0.22rem 0.55rem;
+            font-size: 0.68rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .badge-cyan { color: #b2f5ea; background: rgba(49, 151, 149, 0.16); border-color: rgba(79, 209, 197, 0.26); }
+        .badge-amber { color: #fbd38d; background: rgba(246, 173, 85, 0.15); border-color: rgba(246, 173, 85, 0.28); }
+        .badge-red { color: #feb2b2; background: rgba(245, 101, 101, 0.13); border-color: rgba(245, 101, 101, 0.28); }
+        .badge-green { color: #9ae6b4; background: rgba(72, 187, 120, 0.13); border-color: rgba(72, 187, 120, 0.25); }
+        .badge-blue { color: #bee3f8; background: rgba(99, 179, 237, 0.13); border-color: rgba(99, 179, 237, 0.25); }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            display: inline-block;
+            background: var(--cyan);
+            box-shadow: 0 0 10px rgba(118, 228, 247, 0.9);
+        }
+
+        .donut {
+            width: 148px;
+            height: 148px;
+            display: grid;
+            place-items: center;
+            border-radius: 999px;
+            background: conic-gradient(var(--amber) 0 86%, #343b48 86% 100%);
+        }
+
+        .donut-inner {
+            width: 112px;
+            height: 112px;
+            display: grid;
+            place-items: center;
+            border-radius: 999px;
+            background: #15181f;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .path-bar {
+            height: 0.55rem;
+            border-radius: 999px;
+            background: #303744;
+            overflow: hidden;
+        }
+
+        .path-fill {
+            height: 100%;
+            border-radius: 999px;
+        }
+
+        .source-link {
+            color: #9fb3ca;
+            text-decoration: none;
+        }
+
+        .source-link:hover {
+            color: #edf2f7;
+        }
+    </style>
+</head>
+<body class="min-h-screen px-4 py-6 md:px-8 md:py-8">
+    <main class="mx-auto max-w-7xl">
+        <header class="mb-7 border-b border-[#313946] pb-6">
+            <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                <div class="max-w-4xl">
+                    <div class="mb-3 flex flex-wrap items-center gap-3">
+                        <span class="dot"></span>
+                        <span class="text-xs font-extrabold uppercase tracking-[0.24em] text-cyan-200">10-Indicator Regime Monitor</span>
+                        <span class="rounded-md bg-[#252b35] px-2.5 py-1 text-xs font-bold text-slate-300 value-mono">2026-06-24</span>
+                        <span class="rounded-md bg-[#252b35] px-2.5 py-1 text-xs font-bold text-slate-300">CALGARY INTRADAY</span>
+                        <a class="rounded-md border border-[#3b4554] bg-[#171a20] px-2.5 py-1 text-xs font-bold text-slate-300 transition hover:border-slate-400 hover:text-white" href="/reports/index.html">历史记录</a>
+                    </div>
+                    <h1 class="text-3xl font-extrabold tracking-tight text-white md:text-5xl">黄金10指标状态看板</h1>
+                    <p class="mt-3 text-sm leading-6 text-slate-400">
+                        当前模型状态：
+                        <span class="font-extrabold text-amber-300">Capitulation Test with Oversold Deviation</span>
+                        <span class="text-slate-500">/</span>
+                        <span class="font-extrabold text-amber-300">破位后的恐慌抛售测试与超卖乖离</span>
+                    </p>
+                </div>
+
+                <div class="grid w-full grid-cols-1 gap-4 sm:grid-cols-3 lg:w-auto lg:min-w-[650px]">
+                    <div class="card metric-card">
+                        <div class="text-xs uppercase tracking-wider text-slate-500">XAU/USD Reference</div>
+                        <div class="mt-2 text-3xl font-extrabold text-red-200 value-mono">$4,012.94</div>
+                        <div class="mt-1 text-xs font-bold text-red-300">日内跌破 $4,000 | 约 -2.36%</div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="text-xs uppercase tracking-wider text-slate-500">状态识别置信度</div>
+                        <div class="mt-2 text-3xl font-extrabold text-amber-300 value-mono">86<span class="text-lg text-slate-500">/100</span></div>
+                        <div class="mt-1 text-xs font-bold text-amber-300">判断当前市场状态</div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="text-xs uppercase tracking-wider text-slate-500">未来10日第一情景概率</div>
+                        <div class="mt-2 text-3xl font-extrabold text-red-300 value-mono">50%</div>
+                        <div class="mt-1 text-xs font-bold text-red-300">破位后低位换手</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
+            <article class="card p-5 md:p-6 lg:col-span-2">
+                <div class="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                    <div>
+                        <h2 class="text-xl font-extrabold text-white">综合分析结论</h2>
+                        <p class="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Pure 10-Indicator Procedure</p>
+                    </div>
+                    <span class="w-fit badge badge-amber">模型状态: 破位后的恐慌抛售测试与超卖乖离</span>
+                </div>
+
+                <div class="space-y-5">
+                    <div>
+                        <div class="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500">结论 1: 未来 1-2 周 | 破位后低位换手 / 超卖反抽测试概率较高</div>
+                        <p class="text-sm leading-7 text-slate-300">
+                            <strong class="text-amber-300">未来 1-2 周更可能处在破位后的低位换手 / 超卖反抽测试结构，第一情景概率约 50%。</strong>
+                            XAU/USD 实时参考约 <span class="font-extrabold text-white value-mono">$4,012.94</span>，
+                            日内低点触及 <span class="font-extrabold text-white value-mono">$3,964.64</span>，
+                            已经有效检验 <span class="font-extrabold text-white value-mono">$4,000</span> 心理关口。
+                            RSI 回落至约 <span class="font-extrabold text-white value-mono">26.8</span>，
+                            布林带 %B 降至约 <span class="font-extrabold text-white value-mono">-0.01</span>，
+                            TD 序列推进至 <span class="font-extrabold text-white value-mono">Buy 6</span>。
+                            这些读数说明短线已经进入深度超卖和破位抛售区，但尚未出现 TD 9/13 级别的完整衰竭信号。
+                            若 <span class="font-extrabold text-white value-mono">$3,965-$4,000</span> 区域不能稳定收回，清算惯性仍可能延伸；若重新站回 <span class="font-extrabold text-white value-mono">$4,050-$4,120</span>，则更容易转入超卖反抽和低位震荡。
+                        </p>
+                    </div>
+
+                    <div class="border-t border-[#313946] pt-5">
+                        <div class="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500">结论 2: 未来 1-3 个月 | 中期趋势仍处压力重定价阶段</div>
+                        <p class="text-sm leading-7 text-slate-300">
+                            <strong class="text-amber-300">未来 1-3 个月暂不确认中期趋势反转，更偏向弱势修复、宽幅震荡或低位重定价。</strong>
+                            DXY 维持在约
+                            <span class="font-extrabold text-white value-mono">101.7</span> 附近并处在 52 周高位区，
+                            10 年期 TIPS 实际利率约 <span class="font-extrabold text-white value-mono">2.27%</span>，
+                            COT 商业净空扩大至约 <span class="font-extrabold text-white value-mono">-208k</span> 张，
+                            GLD 成交口径 P/C 升至 <span class="font-extrabold text-white value-mono">1.43</span>，
+                            GC 期权权利金口径 P/C 升至 <span class="font-extrabold text-white value-mono">1.12</span>，
+                            表示保护性仓位和避险对冲需求明显增强。GVZ 最新官方读数为 <span class="font-extrabold text-white value-mono">27.41</span>，
+                            说明波动风险仍未消退。中期结构需要价格重新站稳 <span class="font-extrabold text-white value-mono">$4,120-$4,260</span>，
+                            同时 DXY 和实际利率转弱，才可把模型状态从破位重定价上调为结构修复。
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-3 border-t border-[#313946] pt-5 md:grid-cols-3">
+                        <div class="rounded-lg bg-[#20252e] p-4">
+                            <div class="text-xs font-bold text-slate-500">反抽确认区</div>
+                            <div class="mt-1 text-xl font-extrabold text-green-300 value-mono">$4,120-$4,260</div>
+                            <p class="mt-2 text-xs leading-5 text-slate-500">有效站稳后，低位反抽才升级为结构修复。</p>
+                        </div>
+                        <div class="rounded-lg bg-[#20252e] p-4">
+                            <div class="text-xs font-bold text-slate-500">当前检验区</div>
+                            <div class="mt-1 text-xl font-extrabold text-amber-300 value-mono">$3,965-$4,120</div>
+                            <p class="mt-2 text-xs leading-5 text-slate-500">主路径是破位后换手和超卖反抽测试。</p>
+                        </div>
+                        <div class="rounded-lg bg-[#20252e] p-4">
+                            <div class="text-xs font-bold text-slate-500">下行风险触发</div>
+                            <div class="mt-1 text-xl font-extrabold text-red-300 value-mono">&lt; $3,965</div>
+                            <p class="mt-2 text-xs leading-5 text-slate-500">有效跌破后，$3,880-$3,950 风险区打开。</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <aside class="card flex flex-col items-center justify-center p-6">
+                <div class="mb-7 text-center text-sm font-bold uppercase tracking-[0.18em] text-slate-400">状态识别置信度</div>
+                <div class="donut">
+                    <div class="donut-inner">
+                        <div class="text-center">
+                            <div class="text-4xl font-extrabold text-white value-mono">86</div>
+                            <div class="text-xs font-bold text-slate-500 value-mono">/100</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-7 max-w-xs text-center text-xs leading-6 text-slate-400">
+                    86/100 表示对“破位后的恐慌抛售测试与超卖乖离”这个状态判断的把握；它不是未来上涨或下跌概率。
+                </p>
+            </aside>
+        </section>
+
+        <section class="mb-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
+            <div class="card p-5">
+                <div class="mb-3 flex items-center justify-between gap-4">
+                    <span class="text-sm font-extrabold text-slate-200">破位后低位换手 / 超卖反抽测试</span>
+                    <span class="text-2xl font-extrabold text-red-300 value-mono">50%</span>
+                </div>
+                <div class="path-bar"><div class="path-fill bg-red-400" style="width:50%"></div></div>
+                <p class="mt-3 text-xs leading-5 text-slate-500">第一情景概率，重点观察 $3,965-$4,000 能否收回并形成低位换手。</p>
+            </div>
+            <div class="card p-5">
+                <div class="mb-3 flex items-center justify-between gap-4">
+                    <span class="text-sm font-extrabold text-slate-200">跌破 $3,965 后清算延续</span>
+                    <span class="text-2xl font-extrabold text-red-300 value-mono">30%</span>
+                </div>
+                <div class="path-bar"><div class="path-fill bg-red-400" style="width:30%"></div></div>
+                <p class="mt-3 text-xs leading-5 text-slate-500">宏观压力和仓位清算未解除，跌破日内低点会扩大惯性下探。</p>
+            </div>
+            <div class="card p-5">
+                <div class="mb-3 flex items-center justify-between gap-4">
+                    <span class="text-sm font-extrabold text-slate-200">快速收复 $4,120-$4,150</span>
+                    <span class="text-2xl font-extrabold text-green-300 value-mono">20%</span>
+                </div>
+                <div class="path-bar"><div class="path-fill bg-green-300" style="width:20%"></div></div>
+                <p class="mt-3 text-xs leading-5 text-slate-500">需要价格重新站回破位区，同时美元和实际利率停止上行。</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="mb-4 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+                <div>
+                    <h3 class="text-lg font-extrabold text-white">十大核心量价指标</h3>
+                    <p class="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">As of Calgary Jun 24, 2026 intraday</p>
+                </div>
+                <div class="text-xs text-slate-500">主模型仍只使用 10 指标；ETF 资金流 / COMEX 库存不纳入主结论。</div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-5">
+                <article class="card metric-card">
+                    <div class="mb-2 flex items-start justify-between gap-3">
+                        <div class="text-[11px] font-bold text-slate-400">1. RSI (14) 日线</div>
+                        <span class="badge badge-red">深度超卖</span>
+                    </div>
+                    <div class="mb-2 text-2xl font-extrabold text-red-200 value-mono">26.8</div>
+                    <p class="border-t border-[#313946] pt-2 text-[11px] leading-5 text-slate-500">跌破 30 超卖线，说明短线抛压极端化；它提高反抽概率，但不等同于趋势反转。</p>
+                </article>
+
+                <article class="card metric-card">
+                    <div class="mb-2 flex items-start justify-between gap-3">
+                        <div class="text-[11px] font-bold text-slate-400">2. TD 序列</div>
+                        <span class="badge badge-amber">Buy 6</span>
+                    </div>
+                    <div class="mb-2 text-2xl font-extrabold text-white value-mono">Buy 6</div>
+                    <p class="border-t border-[#313946] pt-2 text-[11px] leading-5 text-slate-500">下跌计数继续推进，尚未到 9/13 衰竭区；破位后仍处在惯性测试阶段。</p>
+                </article>
+
+                <article class="card metric-card">
+                    <div class="mb-2 flex items-start justify-between gap-3">
+                        <div class="text-[11px] font-bold text-slate-400">3. 布林带 %B</div>
+                        <span class="badge badge-red">跌破下轨</span>
+                    </div>
+                    <div class="mb-2 text-2xl font-extrabold text-red-200 value-mono">-0.01</div>
+                    <p class="border-t border-[#313946] pt-2 text-[11px] leading-5 text-slate-500">价格落到 20 日布林下轨外侧，属于非均衡下跌；短线容易有反抽，但也代表破位强度较高。</p>
+                </article>
+
+                <article class="card metric-card">
+                    <div class="mb-2 flex items-start justify-between gap-3">
+                        <div class="text-[11px] font-bold text-slate-400">4. VPT/OBV 量价趋势</div>
+                        <span class="badge badge-red">下跌放量</span>
+                    </div>
+                    <div class="mb-2 text-2xl font-extrabold text-red-200 value-mono">Weak</div>
+                    <p class="border-t border-[#313946] pt-2 text-[11px] leading-5 text-slate-500">连续下跌日伴随放量，量价没有显示主动吸筹，反抽确认条件不足。</p>
+                </article>
+
+                <article class="card metric-card">
+                    <div class="mb-2 flex items-start justify-between gap-3">
+                        <div class="text-[11px] font-bold text-slate-400">5. 金银比</div>
+                        <span class="badge badge-red">风险偏弱</span>
+                    </div>
+                    <div class="mb-2 text-2xl font-extrabold text-red-200 value-mono">~68.2</div>
+                    <p class="border-t border-[#313946] pt-2 text-[11px] leading-5 text-slate-500">白银跌幅明显大于黄金，金银比继续上行，贵金属内部风险偏好走弱。</p>
+                </article>
+
+                <article class="card metric-card">
+                    <div class="mb-2 flex items-start justify-between gap-3">
+                        <div class="text-[11px] font-bold text-slate-400">6. 美元指数 DXY</div>
+                        <span class="badge badge-red">强势压制</span>
+                    </div>
+                    <div class="mb-2 text-2xl font-extrabold text-red-200 value-mono">101.69</div>
+                    <p class="border-t border-[#313946] pt-2 text-[11px] leading-5 text-slate-500">美元指数处在 52 周高位区，强势美元继续压制黄金的趋势修复。</p>
+                </article>
+
+                <article class="card metric-card">
+                    <div class="mb-2 flex items-start justify-between gap-3">
+                        <div class="text-[11px] font-bold text-slate-400">7. 10Y 实际利率</div>
+                        <span class="badge badge-red">仍在高位</span>
+                    </div>
+                    <div class="mb-2 text-2xl font-extrabold text-red-200 value-mono">2.27%</div>
+                    <p class="border-t border-[#313946] pt-2 text-[11px] leading-5 text-slate-500">10Y TIPS 仍在高位区，对无息资产形成中期估值压力。</p>
+                </article>
+
+                <article class="card metric-card">
+                    <div class="mb-2 flex items-start justify-between gap-3">
+                        <div class="text-[11px] font-bold text-slate-400">8. GVZ 黄金波动率</div>
+                        <span class="badge badge-amber">波动偏高</span>
+                    </div>
+                    <div class="mb-2 text-2xl font-extrabold text-amber-200 value-mono">27.41</div>
+                    <p class="border-t border-[#313946] pt-2 text-[11px] leading-5 text-slate-500">FRED 最新官方 6/23 读数回升，波动风险仍未完全消退。</p>
+                </article>
+
+                <article class="card metric-card">
+                    <div class="mb-2 flex items-start justify-between gap-3">
+                        <div class="text-[11px] font-bold text-slate-400">9. COT 商业持仓</div>
+                        <span class="badge badge-red">净空仍大</span>
+                    </div>
+                    <div class="mb-2 text-2xl font-extrabold text-red-200 value-mono">-208k</div>
+                    <p class="border-t border-[#313946] pt-2 text-[11px] leading-5 text-slate-500">CFTC 截至 6/16 商业净空扩大，实体对冲压力仍高，底部承接未充分确认。</p>
+                </article>
+
+                <article class="card metric-card">
+                    <div class="mb-2 flex items-start justify-between gap-3">
+                        <div class="text-[11px] font-bold text-slate-400">10. 期权 P/C Ratio</div>
+                        <span class="badge badge-red">保护升温</span>
+                    </div>
+                    <div class="mb-2 text-2xl font-extrabold text-red-200 value-mono">1.43 / 1.12</div>
+                    <p class="border-t border-[#313946] pt-2 text-[11px] leading-5 text-slate-500">GLD 成交口径 P/C 升至 1.43，GC 期权权利金口径约 1.12；保护性需求明显增加。</p>
+                </article>
+            </div>
+        </section>
+
+        <footer class="mt-8 border-t border-[#313946] pt-5 text-center text-[11px] leading-6 text-slate-600">
+            Data references:
+            <a class="source-link" href="https://www.investing.com/currencies/xau-usd-historical-data">Investing.com XAU/USD Historical</a> |
+            <a class="source-link" href="https://www.investing.com/currencies/xag-usd">Investing.com XAG/USD</a> |
+            <a class="source-link" href="https://tradingeconomics.com/commodity/gold">Trading Economics Gold</a> |
+            <a class="source-link" href="https://www.investing.com/indices/usdollar">Investing.com DXY</a> |
+            <a class="source-link" href="https://tradingeconomics.com/united-states/10-year-tips-yield">Trading Economics 10Y TIPS</a> |
+            <a class="source-link" href="https://fred.stlouisfed.org/series/DFII10">FRED DFII10</a> |
+            <a class="source-link" href="https://fred.stlouisfed.org/series/GVZCLS">FRED GVZCLS</a> |
+            <a class="source-link" href="https://www.cftc.gov/dea/futures/deacmxsf.htm">CFTC COT</a> |
+            <a class="source-link" href="https://www.barchart.com/futures/quotes/GC%2A0/options">Barchart GC Options</a> |
+            <a class="source-link" href="https://www.barchart.com/etfs-funds/quotes/GLD/put-call-ratios">Barchart GLD Put/Call</a>
+            <div>Generated via Gold 10-Indicator Regime Procedure. Not investment advice.</div>
+        </footer>
+    </main>
+</body>
+</html>
