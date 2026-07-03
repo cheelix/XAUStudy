@@ -7,28 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Noto Sans SC', 'Inter', sans-serif;
-            background: linear-gradient(180deg, #10131a 0%, #0b0d10 45%);
-            color: #edf2f7;
-        }
-
-        .value-mono {
-            font-family: 'Inter', monospace;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .archive-card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 100%), #171a20;
-            border: 1px solid #313946;
-            border-radius: 8px;
-            transition: border-color 0.18s ease, transform 0.18s ease;
-        }
-
-        .archive-card:hover {
-            border-color: rgba(246, 173, 85, 0.58);
-            transform: translateY(-2px);
-        }
+        body { font-family: 'Noto Sans SC', 'Inter', sans-serif; background: linear-gradient(180deg, #10131a 0%, #0b0d10 45%); color: #edf2f7; }
+        .value-mono { font-family: 'Inter', monospace; font-variant-numeric: tabular-nums; }
+        .archive-card { background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 100%), #171a20; border: 1px solid #313946; border-radius: 8px; transition: border-color 0.18s ease, transform 0.18s ease; }
+        .archive-card:hover { border-color: rgba(246, 173, 85, 0.58); transform: translateY(-2px); }
     </style>
 </head>
 <body class="min-h-screen px-4 py-8 md:px-8">
@@ -41,42 +23,402 @@
             </div>
             <h1 class="text-3xl font-extrabold tracking-tight text-white md:text-5xl">Gemini 黄金分析历史记录</h1>
             <p class="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
-                每条记录右侧同步展示正文圆环里的 10 日路径名称与概率，方便在列表里直接比较 Gemini 当时的短线主判断。
+                每条记录右侧同步展示正文圆环里的 10 日路径名称与概率，方便在列表里直接比较 Gemini 当时的短线主判断。当前共归档 <span class="font-extrabold text-amber-300 value-mono">35</span> 个 Gemini 静态页面。
             </p>
         </header>
 
         <section class="grid grid-cols-1 gap-4">
-            <a class="archive-card block p-5" href="/gemini/reports/2026-06-26_downtrend-continuation-support-test_4077-40.html">
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-02_192902_breakout-squeeze_4188-935.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
-                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-26 · Gemini</div>
-                        <h2 class="mt-2 text-xl font-extrabold text-white">Downtrend Continuation + Support Test</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">阴跌中继与底层支撑测试；主判断为下探 $3,960 支撑线。</p>
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-02 19:29 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Breakout Squeeze</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">量价齐升与轧空主升浪 (Breakout &amp; Squeeze)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">$4,077.40</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4188.935</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
-                            <div class="text-xs leading-4 text-slate-500">未来10日下探 $3,960 支撑线概率</div>
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日轧空延续概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-emerald-300 value-mono">94%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-02_115112_volume-backed-squeeze_4106-55.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-02 11:51 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Volume Backed Squeeze</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">右侧量价齐升与轧空爆发 (Volume-Backed Squeeze)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4106.55</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日轧空延续概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-emerald-300 value-mono">92%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-02_082709_cd13-exhaustion-accumulation_4121-735.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-02 08:27 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">CD13 Exhaustion Accumulation</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">极值动能衰竭与机构暗中吸筹 (Accumulation)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4121.735</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日轧空反弹概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">88%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-02_082521_unconfirmed-bounce-bull-trap_4130-785.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-02 08:25 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Unconfirmed Bounce Bull Trap</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">量价背离与多头陷阱 (Unconfirmed Bounce)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4130.785</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日遇阻回落概率</div>
                             <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">85%</div>
                         </div>
                     </div>
                 </div>
             </a>
-
-            <a class="archive-card block p-5" href="/gemini/reports/2026-06-25_secondary-bottom-test-support-test_4042-05.html">
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-02_075511_volume-backed-breakout-reversal_4142-47.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
-                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-25 · Gemini</div>
-                        <h2 class="mt-2 text-xl font-extrabold text-white">Secondary Bottom Test + Support Test</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">二次探底与支撑位极限测试；主判断为下测 $3,966 支撑线。</p>
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-02 07:55 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Volume Backed Breakout Reversal</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">带量突破与多头反转 (Volume-backed Breakout)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">$4,042.05</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4142.47</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10日延续突破上行概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">88%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-02_002021_support-verification-cross-timeframe-divergence_4073-32.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-02 00:20 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Support Verification Cross Timeframe Divergence</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">支撑确认与跨周期分歧 (Support Verification)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4073.32</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日延续反弹概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">82%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-02_001133_cd13-exhaustion-accumulation-10d_4069-69.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-02 00:11 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">CD13 Exhaustion Accumulation 10d</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">极值动能衰竭与机构暗中吸筹模型 (Exhaustion &amp; Accumulation)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4069.69</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日轧空反弹概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">88%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-02_000445_cd13-exhaustion-triggered_4069-69.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-02 00:04 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">CD13 Exhaustion Triggered</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">$4,069.69</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4069.69</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日轧空反弹概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">88%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-01_215048_bull-trap-fakeout-alert-v7-2_4064-87.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-01 21:50 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Bull Trap Fakeout Alert V7 2</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">假突破与多头陷阱 (Bull Trap)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4064.87</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日二次探底概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-emerald-300 value-mono">92%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-01_214654_bull-trap-fakeout-alert-model-select_4064-87.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-01 21:46 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Bull Trap Fakeout Alert Model Select</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">假突破与多头陷阱 (Bull Trap)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4064.87</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日二次探底概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-emerald-300 value-mono">92%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-01_213503_bull-trap-fakeout-alert_4064-87.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-01 21:35 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Bull Trap Fakeout Alert</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">$4,064.87</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4064.87</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日二次探底概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-emerald-300 value-mono">92%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-01_104330_reversal-warning-v7-data-stream_4080-23.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-01 10:43 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Reversal Warning V7 Data Stream</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">$4,080.23</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4080.23</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日反转概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">88%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-01_103535_reversal-warning-mtfa_3960.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-01 10:35 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Reversal Warning MTFA</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">2026.07.01</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$3960</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10个交易日延续反弹概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">88%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-07-01_092845_double-bottom-volume-breakout_4080-23.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-01 09:28 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Double Bottom Volume Breakout</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">底部反转验证 (Trend Reversal)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4080.23</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10日延续反弹/向上逼空概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">88%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-06-30_130837_new-downward-cycle-sell-sequence_4025-24.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-30 13:08 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">New Downward Cycle Sell Sequence</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">空头趋势重启 (Sell Sequence Initiated)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4025.24</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10日下测 $3,947 支撑线概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">89%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-06-29_172559_bull-trap-exposed-trend-resumption_4020-56.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-29 17:25 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Bull Trap Exposed Trend Resumption</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">跌势重启 (Trend Resumption)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4020.56</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10日延续阴跌/击穿$4000概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">87%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-06-29_172121_bull-trap-exposed-trend-resumption_4020-56.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-29 17:21 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Bull Trap Exposed Trend Resumption</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">跌势重启 (Trend Resumption)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4020.56</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10日延续阴跌/击穿$4000概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">87%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-06-27_133737_fake-rebound-bear-flag_4088-38.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-27 13:37 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Fake Rebound Bear Flag</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">跌势中继 (Downtrend Continuation)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4088.38</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10日反弹遇阻/跌向$4000概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">86%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-06-26_downtrend-continuation-support-test_4077-40.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-26 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Downtrend Continuation Support Test</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">阴跌中继 (Downtrend Continuation)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4077.40</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10日下测 $3,960 支撑概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">85%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-06-26_091948_magnetic-draw-downtrend-continuation_4077-40.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-26 09:19 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Magnetic Draw Downtrend Continuation</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">阴跌中继 (Downtrend Continuation)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4077.40</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs leading-4 text-slate-500">未来10日下测 $3,960 支撑概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">85%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="archive-card block p-5" href="/gemini/reports/2026-06-25_secondary-bottom-test-support-test_4042-05.html">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="min-w-0">
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-25 · Gemini</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Secondary Bottom Test Support Test</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">支撑位极限测试 (Support Test)</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4042.05</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日下测 $3,966 支撑线概率</div>
@@ -85,18 +427,17 @@
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-24_075603_liquidity-sweep-false-support_4029-52.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-24 07:56 · Gemini</div>
-                        <h2 class="mt-2 text-xl font-extrabold text-white">Liquidity Sweep + False Support</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">流动性扫荡与虚假企稳；主判断为二次跌破前低 / 重心坍塌风险。</p>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Liquidity Sweep False Support</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">虚假企稳 (False Support)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">$4,029.52</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4029.52</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日二次跌破 $3974 概率</div>
@@ -105,18 +446,17 @@
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-23_114444_dead-cat-bounce-downtrend-continuation_4184-31.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-23 11:44 · Gemini</div>
-                        <h2 class="mt-2 text-xl font-extrabold text-white">Dead Cat Bounce + Downtrend Continuation</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">死猫跳诱多与阴跌中继；最新 Gemini HTML 归档。</p>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Dead Cat Bounce Downtrend Continuation</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">死猫跳诱多与阴跌中继 (Dead Cat Bounce)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4,184.31</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4184.31</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日反弹遇阻/延续阴跌概率</div>
@@ -125,18 +465,17 @@
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-23_112820_downtrend-continuation-static_4134-19.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-23 11:28 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Downtrend Continuation Static</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">React 内容抽取后的静态 HTML 版本。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">阴跌中继与空头主导下探 (DOWNTREND CONTINUATION)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4,134.19</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4134.19</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日延续阴跌 / 寻底概率</div>
@@ -145,38 +484,36 @@
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-23_111154_downtrend-continuation-state-matrix_4134-19.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-23 11:11 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Downtrend Continuation State Matrix</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">趋势延续状态矩阵页面。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">{currentSession.statusBadge}</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4,134.19</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4134.19</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
-                            <div class="text-xs leading-4 text-slate-500">未来10日延续阴跌 / 寻底概率</div>
+                            <div class="text-xs leading-4 text-slate-500">未来10日主判断概率</div>
                             <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">87%</div>
                         </div>
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-22_194635_downtrend-continuation-analysis_4161-81.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-22 19:46 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Downtrend Continuation Analysis</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">阴跌中继分析版。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">阴跌中继 (Downtrend Continuation)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4,161.81</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4161.81</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日阴跌延续/下探关口概率</div>
@@ -185,58 +522,55 @@
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-22_194305_downtrend-continuation_4161-810.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-22 19:43 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Downtrend Continuation</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">阴跌中继与空头动能积蓄。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">DOWNTREND CONTINUATION</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4,161.810</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4161.810</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
-                            <div class="text-xs leading-4 text-slate-500">阴跌延续 / 下探概率评分</div>
-                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">86%</div>
+                            <div class="text-xs leading-4 text-slate-500">未来10日主判断概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-amber-300 value-mono">50%</div>
                         </div>
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-22_102722_downtrend-in-progress_4184-310.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-22 10:27 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Downtrend In Progress</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">趋势延续页面。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">DOWNTREND IN PROGRESS</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4,184.310</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4184.310</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
-                            <div class="text-xs leading-4 text-slate-500">趋势延续 (继续下跌) 概率</div>
-                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">85%</div>
+                            <div class="text-xs leading-4 text-slate-500">未来10日主判断概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-amber-300 value-mono">50%</div>
                         </div>
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-22_100315_liquidation-cascade-structural-exhaustion_4055-135.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-22 10:03 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Liquidation Cascade Structural Exhaustion</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">清算链与结构性衰竭页面。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">恐慌宣泄与动能筑底</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">$4,055.135</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4055.135</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日惯性寻底后反抽筑底概率</div>
@@ -245,18 +579,17 @@
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-19_112429_bear-flag-breakdown_4155-40.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-19 11:24 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Bear Flag Breakdown</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">熊旗破位页面。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">熊旗破位 (Bear Flag Breakdown)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">$4,155.40</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4155.40</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日跌势延续/加速探底概率</div>
@@ -265,18 +598,17 @@
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-17_093522_false-rebound-drift-downward_4356-51.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-17 09:35 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">False Rebound Drift Downward</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">假反弹后的震荡下移页面。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">虚增溢价出清 (Trap Warning)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-cyan-200 value-mono">$4,356.51</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4356.51</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日反弹遇阻回落概率</div>
@@ -285,18 +617,17 @@
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-14_213800_mean-reversion-completed_analysis_4324-58.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-14 21:38 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Mean Reversion Completed Analysis</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">均值回归完成分析版。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">超卖修复完成 (Mean Reversion)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-cyan-200 value-mono">$4,324.58</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4324.58</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日反弹遇阻/二次探底概率</div>
@@ -305,38 +636,36 @@
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-14_211733_mean-reversion-completed_4324-58.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-14 21:17 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Mean Reversion Completed</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">均值回归完成页面。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">MEAN REVERSION COMPLETED</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-cyan-200 value-mono">$4,324.58</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4324.58</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
-                            <div class="text-xs leading-4 text-slate-500">未来10日概率</div>
-                            <div class="mt-1 text-lg font-extrabold text-slate-400">未标注</div>
+                            <div class="text-xs leading-4 text-slate-500">未来10日主判断概率</div>
+                            <div class="mt-1 text-2xl font-extrabold text-amber-300 value-mono">50%</div>
                         </div>
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-10_211008_ultimate-liquidation-zone_4055-13.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-10 21:10 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Ultimate Liquidation Zone</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">终极清算区域页面。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">极值共振下的枯竭 (Exhaustion &amp; Panic)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">$4,055.13</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4055.13</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日触底反抽/低位剧烈震荡概率</div>
@@ -345,22 +674,21 @@
                     </div>
                 </div>
             </a>
-
             <a class="archive-card block p-5" href="/gemini/reports/2026-06-09_130306_systemic-liquidation-cascade_4264-58.html">
                 <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div class="min-w-0">
                         <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-09 13:03 · Gemini</div>
                         <h2 class="mt-2 text-xl font-extrabold text-white">Systemic Liquidation Cascade</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-400">系统性清算链页面。</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">系统性流动性枯竭 (Liquidation Cascade)</p>
                     </div>
                     <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 lg:min-w-[390px]">
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs text-slate-500">XAU/USD</div>
-                            <div class="mt-1 text-lg font-extrabold text-red-300 value-mono">$4,264.58</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4264.58</div>
                         </div>
                         <div class="rounded-md bg-[#20252e] px-3 py-3">
                             <div class="text-xs leading-4 text-slate-500">未来10日延续下行/低位盘整概率</div>
-                            <div class="mt-1 text-2xl font-extrabold text-red-300 value-mono">90%</div>
+                            <div class="mt-1 text-2xl font-extrabold text-emerald-300 value-mono">90%</div>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄金趋势反转监测系统 (Reversal Warning System)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #0f172a; 
+            color: #f1f5f9; 
+        }
+        .mono { font-family: 'IBM+Plex+Mono', monospace; }
+        
+        .indicator-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+        .indicator-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(148, 163, 184, 0.3);
+        }
+
+        /* Signal Colors */
+        .bg-danger { background-color: rgba(239, 68, 68, 0.15); border-left: 4px solid #ef4444; }
+        .bg-warning { background-color: rgba(245, 158, 11, 0.15); border-left: 4px solid #f59e0b; }
+        .bg-neutral { background-color: rgba(59, 130, 246, 0.15); border-left: 4px solid #3b82f6; }
+        .bg-success { background-color: rgba(16, 185, 129, 0.15); border-left: 4px solid #10b981; }
+        
+        .text-danger { color: #ef4444; }
+        .text-warning { color: #f59e0b; }
+        .text-success { color: #10b981; }
+    </style>
+</head>
+<body class="pb-12">
+
+    <div class="bg-slate-950 border-b border-slate-800 px-4 py-2.5 flex flex-col sm:flex-row justify-between items-center text-[11px] mono text-slate-400 mb-6">
+        <div class="flex items-center gap-4 mb-2 sm:mb-0">
+            <span class="flex items-center gap-1.5 font-bold">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                DATA STREAM ACTIVE
+            </span>
+            <span class="text-slate-300">SYNC TIME: 2026-07-01 10:39 AM MDT (CALGARY)</span>
+        </div>
+        <div class="font-bold tracking-wider">
+            WEB FETCH (SPOT XAU/USD): <span class="text-emerald-400 text-xs ml-1">$4,080.23</span>
+        </div>
+    </div>
+
+    <div class="p-4 md:px-8 max-w-7xl mx-auto">
+        <header class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-slate-700 pb-6">
+            <div>
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-0.5 rounded text-xs font-bold bg-slate-700 text-slate-300">MTFA MODE: DAILY + WEEKLY</span>
+                    <span class="px-2 py-0.5 rounded text-xs font-bold bg-indigo-900/50 text-indigo-400 border border-indigo-700/50">双重验证</span>
+                </div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">黄金趋势反转监测系统</h1>
+                <p class="text-slate-400 mt-2">基于 <span class="text-amber-400">均值回归</span> 与 <span class="text-amber-400">动能跨周期共振</span> 原理</p>
+            </div>
+            <div class="mt-4 md:mt-0 text-right">
+                <div class="text-sm text-slate-500 uppercase tracking-wider">短线反转/轧空评分</div>
+                <div class="text-4xl font-bold text-success mono">88/100</div>
+                <div class="text-xs text-success font-medium animate-pulse">BULLISH REVERSAL CONFIRMED</div>
+            </div>
+        </header>
+
+        <section class="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="col-span-2 bg-slate-800 rounded-lg p-6 border border-slate-700">
+                <h2 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    综合分析结论 (Standard Procedure)
+                </h2>
+                <div class="space-y-4">
+                    <div>
+                        <span class="block text-xs font-bold text-slate-500 uppercase">结论 1: 短期 (日线视角)</span>
+                        <p class="text-slate-200 leading-relaxed text-sm">
+                            <strong class="text-success">极高概率发生短线轧空与均值回归。</strong> 
+                            经过前几轮的极限诱空洗盘，日线级别已在 $3,950 区域构筑了扎实的“双底 (W底)”结构。最核心的反转信号在于：日线 VPT 资金流已全面翻绿（量价齐升），同时日线 TD 序列阻断了下跌计数，开启了全新的上涨周期（Sell 2）。短线多头已夺取控制权，第一目标位直指 $4,150 阻力区。
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-700 pt-3">
+                        <span class="block text-xs font-bold text-slate-500 uppercase">结论 2: 中期 (周线大局观)</span>
+                        <p class="text-slate-200 leading-relaxed text-sm">
+                            <strong class="text-warning">超级牛市尚未重启，定位为宽幅震荡修复。</strong> 
+                            切勿因日线的大阳线盲目看多至新高。从周线 (Weekly) 视角来看，宏观实际利率依然坚挺在 2.16% 的极端重压区，且周线级别的技术面仍需要数周的时间来化解之前的“极度超买与背离”。中期（1-3个月）定性为：依托 $3,950 底部防线的宽幅箱体震荡。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 flex flex-col justify-center text-center">
+                <div class="text-sm text-slate-400 mb-2">未来10个交易日反转概率</div>
+                <div class="relative w-32 h-32 mx-auto">
+                    <svg class="w-full h-full" viewBox="0 0 36 36">
+                        <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#334155" stroke-width="3" />
+                        <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="88, 100" />
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center text-3xl font-bold text-white mono">88%</div>
+                </div>
+                <div class="mt-4 text-xs text-slate-400">
+                    置信度: <span class="text-amber-400">高</span> (量价共振与双底确认)
+                </div>
+            </div>
+        </section>
+
+        <h3 class="text-lg font-bold text-slate-300 mb-4 pl-1 border-l-4 border-amber-500">十大核心量价指标 (Multi-Timeframe Data)</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+
+            <div class="indicator-card bg-success p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-slate-200">1. RSI (14) 多周期状态</h4>
+                    <span class="px-2 py-0.5 bg-emerald-900 text-emerald-200 text-xs rounded font-mono">BULLISH</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-400 mb-1">
+                    <span>当前读数: <span class="text-white mono">58.7 (Daily) / 45.2 (Weekly)</span></span>
+                    <span>信号: 日线反包</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-2">
+                    日线 RSI 强力击穿 50 中轴并加速向上，短线多头动能爆发。而周线 RSI 处于中性修复区，说明上涨空间未受限。
+                </p>
+            </div>
+
+            <div class="indicator-card bg-success p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-slate-200">2. TD 序列 (DeMark)</h4>
+                    <span class="px-2 py-0.5 bg-emerald-900 text-emerald-200 text-xs rounded font-mono">REVERSAL</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-400 mb-1">
+                    <span>当前计数: <span class="text-white mono">Daily Sell 2 / Weekly Buy 4</span></span>
+                    <span>信号: 跌势阻断</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-2">
+                    日线长达数周的做空动能被完全阻断，开启新的上涨计数（Sell 2）。这代表底部的“V型/W型”反抽正在发力。
+                </p>
+            </div>
+
+            <div class="indicator-card bg-success p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-slate-200">3. 布林带 %B</h4>
+                    <span class="px-2 py-0.5 bg-emerald-900 text-emerald-200 text-xs rounded font-mono">MOMENTUM UP</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-400 mb-1">
+                    <span>当前读数: <span class="text-white mono">0.87 (Daily)</span></span>
+                    <span>阈值: 逼近上轨</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-2">
+                    价格迅速脱离布林带下轨的阴跌泥潭，正以极高的弹性逼近上轨。波动率放大且方向朝上。
+                </p>
+            </div>
+
+            <div class="indicator-card bg-success p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-slate-200">4. 量价趋势 (VPT/OBV)</h4>
+                    <span class="px-2 py-0.5 bg-emerald-900 text-emerald-200 text-xs rounded font-mono">CONFIRMATION</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-400 mb-1">
+                    <span>信号: <span class="text-white mono">量价齐升 (UP)</span></span>
+                    <span>逻辑: 真金白银进场</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-2">
+                    全盘最核心指标翻绿。这意味着本轮大阳线伴随着真实的增量买盘（非单纯空头平仓），反转的含金量极高。
+                </p>
+            </div>
+
+            <div class="indicator-card bg-neutral p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-slate-200">5. 金银比 (Gold/Silver Ratio)</h4>
+                    <span class="px-2 py-0.5 bg-blue-900 text-blue-200 text-xs rounded font-mono">SILVER LEADING</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-400 mb-1">
+                    <span>当前状态: <span class="text-white mono">67.87 (回落)</span></span>
+                    <span>逻辑: 风险偏好回暖</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-2">
+                    白银展现出比黄金更强的进攻性，使得比值下降。这是贵金属板块投机情绪全面修复的健康标志。
+                </p>
+            </div>
+
+            <div class="indicator-card bg-warning p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-slate-200">6. 美元指数 (DXY)</h4>
+                    <span class="px-2 py-0.5 bg-amber-900 text-amber-200 text-xs rounded font-mono">RESISTANCE</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-400 mb-1">
+                    <span>当前位置: <span class="text-white mono">101.33 (震荡)</span></span>
+                    <span>逻辑: 宏观压制</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-2">
+                    黄金走出了独立反转，但美元并未发生溃败，依然在 101 上方盘整。这限制了黄金短线逼空的绝对高度。
+                </p>
+            </div>
+
+            <div class="indicator-card bg-danger p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-slate-200">7. 实际利率 (10Y TIPS)</h4>
+                    <span class="px-2 py-0.5 bg-red-900 text-red-200 text-xs rounded font-mono">FUNDAMENTAL DRAG</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-400 mb-1">
+                    <span>当前读数: <span class="text-white mono">2.16%</span></span>
+                    <span>逻辑: 长期估值引力</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-2">
+                    周线级别的最大利空依然存在。灾难级的高息环境决定了长线配置资金不会贸然全仓追高。
+                </p>
+            </div>
+
+            <div class="indicator-card bg-neutral p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-slate-200">8. 黄金波动率 (GVZ)</h4>
+                    <span class="px-2 py-0.5 bg-blue-900 text-blue-200 text-xs rounded font-mono">NORMALIZING</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-400 mb-1">
+                    <span>当前读数: <span class="text-white mono">27.01</span></span>
+                    <span>逻辑: 恐慌退潮</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-2">
+                    波动率从极值跌回 30 以下。市场从初期的恐慌性踩踏，平稳过渡到理性的资金推升博弈阶段。
+                </p>
+            </div>
+
+            <div class="indicator-card bg-success p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-slate-200">9. COT 商业持仓</h4>
+                    <span class="px-2 py-0.5 bg-emerald-900 text-emerald-200 text-xs rounded font-mono">SHORT COVERING</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-400 mb-1">
+                    <span>净空头: <span class="text-white mono">155k (降幅明显)</span></span>
+                    <span>信号: 产业结利</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-2">
+                    在测试 $3,950 底部区域时，庞大的产业空单已完成了结。底部的筹码吸筹结构非常稳固。
+                </p>
+            </div>
+
+            <div class="indicator-card bg-success p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-slate-200">10. 期权认沽/认购比 (P/C)</h4>
+                    <span class="px-2 py-0.5 bg-emerald-900 text-emerald-200 text-xs rounded font-mono">0.85 (REVERSING)</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-400 mb-1">
+                    <span>当前状态: <span class="text-white mono">多头复苏</span></span>
+                    <span>逻辑: 情绪反转</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-2">
+                    前期极端拥挤的看空情绪瓦解，期权买家重新入场购买 Call。做市商的 Gamma 对冲将构成额外的上涨推力。
+                </p>
+            </div>
+
+        </div>
+
+        <footer class="mt-8 pt-6 border-t border-slate-700 text-center text-xs text-slate-500">
+            Standard Quant Protocol V7.0 • Internal Strategy Document • Verification: Active
+        </footer>
+    </div>
+
+</body>
+</html>

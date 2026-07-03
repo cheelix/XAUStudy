@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量价指标十维监测看板 | Dual Verification Monitor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            background-color: #0f172a; 
+            color: #e2e8f0;
+        }
+        
+        .data-card {
+            background-color: #1e293b; 
+            border: 1px solid #334155; 
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            transition: all 0.2s;
+        }
+        .data-card:hover { border-color: #ef4444; transform: translateY(-2px); }
+        
+        .status-bearish { color: #f87171; background-color: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248, 113, 113, 0.2); }
+        .status-bullish { color: #34d399; background-color: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); }
+        .status-neutral { color: #fbbf24; background-color: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.2); }
+        .status-extreme { color: #fca5a5; background-color: rgba(185, 28, 28, 0.3); border: 1px solid rgba(185, 28, 28, 0.5); }
+        
+        .value-mono { font-family: 'Inter', monospace; font-variant-numeric: tabular-nums; }
+        
+        .pulse-dot {
+            height: 8px; width: 8px; background-color: #ef4444; border-radius: 50%; display: inline-block;
+            box-shadow: 0 0 8px #ef4444; animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.5); } 100% { opacity: 1; transform: scale(1); } }
+
+        /* Pure CSS Circular Progress Chart - 85% Fill */
+        .css-donut-chart {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: conic-gradient(#ef4444 0% 85%, #334155 85% 100%);
+        }
+        .css-donut-inner {
+            width: 110px;
+            height: 110px;
+            background-color: #1e293b; 
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 max-w-7xl mx-auto pb-12">
+
+    <!-- Header Section -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-slate-700 pb-6 mb-8 gap-6 md:gap-0">
+        <div>
+            <div class="flex flex-wrap items-center gap-3 mb-2">
+                <span class="pulse-dot"></span>
+                <span class="text-xs font-semibold text-red-500 tracking-wider">MAGNETIC DRAW TO $3,960 SUPPORT</span>
+                <span class="px-2 py-1 rounded text-xs font-semibold bg-slate-700 text-slate-300 value-mono">2026-06-26</span>
+                <span class="px-2 py-1 rounded text-xs font-semibold bg-indigo-900/50 text-indigo-400 border border-indigo-700/50">双重验证模式启用</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">量价指标十维监测看板</h1>
+            <p class="text-slate-400 mt-2 text-sm">均值回归路径追踪：当前处于<span class="text-red-500 font-bold">“阴跌中继与底层支撑测试”</span>阶段</p>
+        </div>
+        
+        <div class="flex flex-col md:flex-row items-end md:items-center gap-6 md:gap-8 w-full md:w-auto">
+            <div class="text-right w-full md:w-auto">
+                <div class="text-sm text-slate-500 uppercase tracking-wider mb-1">实盘参考现货价 (XAU/USD)</div>
+                <div class="text-4xl md:text-5xl font-bold text-red-500 value-mono">$4,077.40</div>
+                <div class="text-xs text-red-500 mt-1 font-bold">无量弱抽 | 逼近 $4,000 关口</div>
+            </div>
+            
+            <div class="text-right w-full md:w-auto border-t border-slate-700 md:border-t-0 md:border-l md:border-slate-700 pt-4 md:pt-0 md:pl-8">
+                <div class="text-sm text-slate-500 uppercase tracking-wider mb-1">延续下探/击穿关口概率</div>
+                <div class="text-4xl md:text-5xl font-bold text-red-600 value-mono">85<span class="text-2xl text-slate-500">/100</span></div>
+                <div class="text-xs text-red-600 mt-1 font-bold animate-pulse">DOWNWARD DRIFT EXPECTED</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Analysis Section -->
+    <section class="mb-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Stacked Conclusions -->
+        <div class="lg:col-span-2 data-card border-slate-700 flex flex-col">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-white flex items-center">
+                    <span class="text-amber-400 mr-2 text-xl">📄</span>
+                    综合分析结论 (Standard Procedure)
+                </h2>
+                <span class="text-xs text-slate-400 bg-red-900/30 border border-red-800 px-2 py-1 rounded text-red-400">模型状态: 阴跌中继 (Downtrend Continuation)</span>
+            </div>
+            
+            <div class="space-y-6 flex-1">
+                <!-- Short Term -->
+                <div>
+                    <span class="block text-xs font-semibold text-slate-500 uppercase mb-2">结论 1: 短期 (1-2周) | 下探 $3,960 支撑线概率: 85%</span>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        <strong class="text-red-400">量价死叉未解，小阳线纯属诱多。</strong> 
+                        客观量化逻辑：金价现报 $4,077.40，盘面看似收出一根反弹的绿色实体，但这是极具欺骗性的陷阱。<span class="text-red-400 font-bold">VPT 量价趋势依然死锁在红色的“量价背离 (DOWN)”</span>，说明这根阳线完全没有增量资金支持，纯粹是空头平仓导致的机械式提拉。TD 序列目前行至 <span class="text-red-400 font-bold">Buy 7</span>，距离动能耗尽的 Buy 9 还有2个交易日，且 RSI (36.65) 尚未触及 30 以下的绝对极值。短线大概率将顺应阻力最小的方向，被图表下方隐现的 <span class="text-amber-400 font-bold">$3,960.827</span> 灰线支撑位所吸附。
+                    </p>
+                </div>
+                <!-- Medium Term -->
+                <div class="border-t border-slate-700 pt-5">
+                    <span class="block text-xs font-semibold text-slate-500 uppercase mb-2">结论 2: 中期 (1-3个月) | 估值底座坍塌概率: 82%</span>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        <strong class="text-amber-500">宏观绞肉机开足马力，无息资产举步维艰。</strong> 
+                        客观量化逻辑：底层宏观数据构成了无法逾越的天堑。美元指数 (DXY) 强势站上 101.14 的震荡高压区，而最核心的 10年期实际利率高企于 <span class="text-red-400 font-bold">2.23%</span>。在如此高昂的无风险收益率面前，长线战略资金缺乏配置黄金的物理动机。中期内，金价将被迫在 $4,000 关口及下方展开残酷的多空拉锯，以完成对“高息+强美元”宏观环境的最终定价。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Probability Donut Chart -->
+        <div class="data-card border-slate-700 flex flex-col justify-center items-center py-10">
+            <div class="text-sm font-medium text-slate-300 mb-8 text-center uppercase tracking-widest">未来10日下测 $3,960 支撑概率</div>
+            
+            <div class="css-donut-chart">
+                <div class="css-donut-inner">
+                    <div class="text-4xl font-bold text-white value-mono tracking-tighter">85%</div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-xs text-slate-400 text-center">
+                置信度: <span class="text-red-500 font-bold">高</span> (量价背离与 TD 倒计时共振)
+            </div>
+        </div>
+    </section>
+
+    <!-- 10 Indicators Dashboard -->
+    <h3 class="text-sm font-bold text-slate-300 mb-4 uppercase tracking-wider">十维核心指标实时状态 (双重交叉验证)</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+
+        <!-- 1. RSI -->
+        <div class="data-card">
+            <div class="flex justify-between items-start mb-2">
+                <div class="text-[10px] text-slate-400">1. RSI (14) 日线 <span class="ml-1 text-[9px] text-emerald-500">[图表]</span></div>
+                <div class="text-[10px] px-2 py-0.5 rounded status-neutral">中性偏空</div>
+            </div>
+            <div class="text-2xl font-bold text-white mb-2 value-mono">36.65</div>
+            <p class="text-[11px] text-slate-500 border-t border-slate-700 pt-2">指标处于 30 线上方的尴尬地带。既没有触发极端超卖的反弹保护，也无法掩盖空头控盘的事实。</p>
+        </div>
+
+        <!-- 2. TD Sequential -->
+        <div class="data-card">
+            <div class="flex justify-between items-start mb-2">
+                <div class="text-[10px] text-slate-400">2. TD 序列 (日线) <span class="ml-1 text-[9px] text-emerald-500">[图表]</span></div>
+                <div class="text-[10px] px-2 py-0.5 rounded status-bearish">趋势中</div>
+            </div>
+            <div class="text-2xl font-bold text-red-400 mb-2 value-mono">Buy 7</div>
+            <p class="text-[11px] text-slate-500 border-t border-slate-700 pt-2">下行序列推进至第 7 根。距离真正的衰竭位（Buy 9）还有两个周期的下行空间，寻底尚未结束。</p>
+        </div>
+
+        <!-- 3. Bollinger Band %B -->
+        <div class="data-card">
+            <div class="flex justify-between items-start mb-2">
+                <div class="text-[10px] text-slate-400">3. 布林带 %B <span class="ml-1 text-[9px] text-emerald-500">[图表]</span></div>
+                <div class="text-[10px] px-2 py-0.5 rounded status-neutral">轨内弱势</div>
+            </div>
+            <div class="text-2xl font-bold text-white mb-2 value-mono">0.21</div>
+            <p class="text-[11px] text-slate-500 border-t border-slate-700 pt-2">价格沿着布林带下半轨运行。属于非常典型的单边阴跌结构，没有发生脱轨，也没有强烈的拉回需求。</p>
+        </div>
+
+        <!-- 4. Volume Price Trend (VPT) -->
+        <div class="data-card">
+            <div class="flex justify-between items-start mb-2">
+                <div class="text-[10px] text-slate-400">4. 量价趋势 <span class="ml-1 text-[9px] text-emerald-500">[图表]</span></div>
+                <div class="text-[10px] px-2 py-0.5 rounded status-extreme">致命背离</div>
+            </div>
+            <div class="text-2xl font-bold text-red-500 mb-2 value-mono">DOWN</div>
+            <p class="text-[11px] text-slate-500 border-t border-slate-700 pt-2"><span class="text-red-400 font-bold">证伪阳线的核心。</span> 当前盘面的小幅反抽伴随资金净流出，大机构无意在此刻进行左侧接盘。</p>
+        </div>
+
+        <!-- 5. Gold/Silver Ratio -->
+        <div class="data-card">
+            <div class="flex justify-between items-start mb-2">
+                <div class="text-[10px] text-slate-400">5. 金银比 (G/S) <span class="ml-1 text-[9px] text-emerald-500">[图表]</span></div>
+                <div class="text-[10px] px-2 py-0.5 rounded status-bullish">白银占优</div>
+            </div>
+            <div class="text-2xl font-bold text-emerald-400 mb-2 value-mono">69.06</div>
+            <p class="text-[11px] text-slate-500 border-t border-slate-700 pt-2">白银保持着微弱的抗跌性，使得金银比未现爆发性上行。这守住了大宗商品最后一丝多头火种。</p>
+        </div>
+
+        <!-- 6. DXY -->
+        <div class="data-card">
+            <div class="flex justify-between items-start mb-2">
+                <div class="text-[10px] text-slate-400">6. 美元指数 (DXY) <span class="ml-1 text-[9px] text-emerald-500">[图表]</span></div>
+                <div class="text-[10px] px-2 py-0.5 rounded status-bearish">高位压制</div>
+            </div>
+            <div class="text-2xl font-bold text-red-400 mb-2 value-mono">101.14</div>
+            <p class="text-[11px] text-slate-500 border-t border-slate-700 pt-2">强势突破 101 大关并进入震荡。强势美元对全球流动性进行虹吸，对黄金构成直接的计价打压。</p>
+        </div>
+
+        <!-- 7. Real Yields (10Y TIPS) -->
+        <div class="data-card">
+            <div class="flex justify-between items-start mb-2">
+                <div class="text-[10px] text-slate-400">7. 实际利率 (10Y) <span class="ml-1 text-[9px] text-emerald-500">[图表]</span></div>
+                <div class="text-[10px] px-2 py-0.5 rounded status-extreme">估值重压</div>
+            </div>
+            <div class="text-2xl font-bold text-red-500 mb-2 value-mono">2.23%</div>
+            <p class="text-[11px] text-slate-500 border-t border-slate-700 pt-2"><span class="text-red-400 font-bold">宏观绞肉机。</span> 坚挺在 2.23% 极端高位，持有无息资产的机会成本极高，中期估值底座持续下沉。</p>
+        </div>
+
+        <!-- 8. GVZ (Gold Volatility) -->
+        <div class="data-card">
+            <div class="flex justify-between items-start mb-2">
+                <div class="text-[10px] text-slate-400">8. 黄金波动率 (GVZ) <span class="ml-1 text-[9px] text-emerald-500">[图表]</span></div>
+                <div class="text-[10px] px-2 py-0.5 rounded status-extreme">恐慌释放</div>
+            </div>
+            <div class="text-2xl font-bold text-red-500 mb-2 value-mono">28.20</div>
+            <p class="text-[11px] text-slate-500 border-t border-slate-700 pt-2">波动率维持在较高水平。这意味着目前的寻底并非温和的洗盘，伴随较大的日内情绪震荡。</p>
+        </div>
+
+        <!-- 9. COT Commercial Net Position (OTC) -->
+        <div class="data-card">
+            <div class="flex justify-between items-start mb-2">
+                <div class="text-[10px] text-slate-400">9. COT 商业持仓 <span class="ml-1 text-[9px] text-blue-400">[网络]</span></div>
+                <div class="text-[10px] px-2 py-0.5 rounded status-neutral">空头回补</div>
+            </div>
+            <div class="text-2xl font-bold text-white mb-2 value-mono">195k</div>
+            <p class="text-[11px] text-slate-500 border-t border-slate-700 pt-2">(网络数据校准) 随着价格逼近 $4,000，产业资本正在有序平空锁定利润，提供被动的下行缓冲。</p>
+        </div>
+
+        <!-- 10. Sentiment (Put/Call Ratio) (OTC) -->
+        <div class="data-card">
+            <div class="flex justify-between items-start mb-2">
+                <div class="text-[10px] text-slate-400">10. 期权 P/C Ratio <span class="ml-1 text-[9px] text-blue-400">[网络]</span></div>
+                <div class="text-[10px] px-2 py-0.5 rounded status-extreme">极度恐慌</div>
+            </div>
+            <div class="text-2xl font-bold text-red-500 mb-2 value-mono">1.35</div>
+            <p class="text-[11px] text-slate-500 border-t border-slate-700 pt-2">(网络数据校准) 散户与投机盘在 $4,000 关口前疯狂买入 Put 避险，拥挤的单边情绪暗示诱空风险。</p>
+        </div>
+
+    </div>
+
+    <footer class="mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-600">
+        Generated via Standard Quant Protocol V6.3 • Dual Verification Mode Active • Target Support Line: $3,960.827
+    </footer>
+
+</body>
+</html>

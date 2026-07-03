@@ -37,16 +37,88 @@
             <div class="mb-3 flex flex-wrap items-center gap-3">
                 <span class="rounded-md bg-[#252b35] px-2.5 py-1 text-xs font-bold uppercase tracking-[0.18em] text-cyan-200">Codex Gold Archive</span>
                 <a class="rounded-md border border-[#3b4554] bg-[#171a20] px-2.5 py-1 text-xs font-bold text-slate-300 transition hover:border-slate-400 hover:text-white" href="/index.html">返回首页</a>
-                <a class="rounded-md border border-[#3b4554] bg-[#171a20] px-2.5 py-1 text-xs font-bold text-slate-300 transition hover:border-slate-400 hover:text-white" href="/reports/2026-06-29.html">最新 Codex 报告</a>
+                <a class="rounded-md border border-[#3b4554] bg-[#171a20] px-2.5 py-1 text-xs font-bold text-slate-300 transition hover:border-slate-400 hover:text-white" href="/reports/2026-07-02.html">最新 Codex 报告</a>
                 <a class="rounded-md border border-[#3b4554] bg-[#171a20] px-2.5 py-1 text-xs font-bold text-slate-300 transition hover:border-slate-400 hover:text-white" href="/gemini/reports/index.html">Gemini 分析</a>
             </div>
-            <h1 class="text-3xl font-extrabold tracking-tight text-white md:text-5xl">Codex 黄金10指标历史记录</h1>
+            <h1 class="text-3xl font-extrabold tracking-tight text-white md:text-5xl">Codex 黄金指标历史记录</h1>
             <p class="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
                 每次生成新的 Codex 分析页面后，保留一个按日期命名的 HTML 快照，方便直接从网页回看当时的模型状态、概率和指标解释。
             </p>
         </header>
 
         <section class="grid grid-cols-1 gap-4">
+            <a class="archive-card block p-5" href="/reports/2026-07-02.html">
+                <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-02 · Calgary Intraday</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Event-Driven Resistance Spike Retest</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">事件驱动冲高测压；主结论为压力未破后回踩确认。TD 已改为 TD9/CD13 日线与周线完整格式。</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3 text-center md:min-w-[320px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4,123.70</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">置信度</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">82/100</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">主结论概率</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">63%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a class="archive-card block p-5" href="/reports/2026-07-01.html">
+                <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-07-01 · Calgary Intraday</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Resistance Retest with Confirmation Deficit</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">反抽触压但确认不足；主结论为先测压后回踩确认。本页起加入 GLD ETF、BEI、WGC 央行购金 3 个辅助指标。</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3 text-center md:min-w-[320px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4,087.05</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">置信度</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">81/100</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">主结论概率</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">60%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a class="archive-card block p-5" href="/reports/2026-06-30.html">
+                <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 value-mono">2026-06-30 · Calgary Intraday</div>
+                        <h2 class="mt-2 text-xl font-extrabold text-white">Support Sweep with Weak Relief Retest</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">支撑扫盘后的弱反抽回测；主结论为低位震荡 + 弱反抽测试。</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3 text-center md:min-w-[320px]">
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">XAU/USD</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">$4,031.43</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">置信度</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">81/100</div>
+                        </div>
+                        <div class="rounded-md bg-[#20252e] px-3 py-3">
+                            <div class="text-xs text-slate-500">主结论概率</div>
+                            <div class="mt-1 text-lg font-extrabold text-amber-300 value-mono">62%</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
             <a class="archive-card block p-5" href="/reports/2026-06-29.html">
                 <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div>
