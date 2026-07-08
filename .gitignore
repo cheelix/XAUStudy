@@ -1,1 +1,6 @@
 .vercel
+.venv/
+__pycache__/
+*.pyc
+secrets/*.env
+secrets/*.json
