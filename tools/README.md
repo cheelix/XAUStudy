@@ -53,8 +53,7 @@ It stores two raw layers:
 Python output is intentionally isolated from AI-written report pages:
 
 - Python data and calculations: `python-data-store`, `python-data-runs`.
-- Codex report HTML pages: `reports`.
-- Gemini report HTML pages: `gemini/reports`.
+- XAU analysis archive: `index.html`.
 
 Current automatic sources:
 

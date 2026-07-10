@@ -1,169 +1,439 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XAU 分析档案首页</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0b0d10;
-            --panel: #171a20;
-            --panel-soft: #20252e;
-            --line: #313946;
-            --text: #edf2f7;
-            --muted: #8e99aa;
-            --amber: #f6ad55;
-            --cyan: #76e4f7;
-            --green: #68d391;
-            --red: #f56565;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="XAU analysis conclusions from 23 June 2026 onward.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%238a6817'/%3E%3C/svg%3E">
+  <title>XAU Analysis Archive</title>
+  <style>
+    :root {
+      --canvas: #f4f1eb;
+      --paper: #fffdf9;
+      --ink: #1a1a18;
+      --muted: #6d6a63;
+      --line: #ded8ce;
+      --gold: #8a6817;
+      --gold-soft: #f6edcf;
+    }
 
-        body {
-            font-family: 'Noto Sans SC', 'Inter', sans-serif;
-            background: linear-gradient(180deg, #10131a 0%, var(--bg) 48%, #080a0d 100%);
-            color: var(--text);
-        }
+    * { box-sizing: border-box; }
 
-        .value-mono {
-            font-family: 'Inter', monospace;
-            font-variant-numeric: tabular-nums;
-        }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        .card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)), var(--panel);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-        }
+    main {
+      width: min(100% - 32px, 980px);
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
 
-        .entry-card {
-            transition: border-color 0.18s ease, transform 0.18s ease;
-        }
+    .site-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
 
-        .entry-card:hover {
-            border-color: rgba(118, 228, 247, 0.55);
-            transform: translateY(-2px);
-        }
+    h1,
+    h2,
+    p,
+    dl,
+    dd { margin: 0; }
 
-        .line-chart {
-            height: 88px;
-            border-radius: 8px;
-            background:
-                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 64px 100%,
-                linear-gradient(180deg, rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 100% 22px,
-                #11151c;
-            position: relative;
-            overflow: hidden;
-        }
+    h1 {
+      max-width: 640px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.35rem, 7vw, 4.35rem);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
 
-        .line-chart::before,
-        .line-chart::after {
-            content: "";
-            position: absolute;
-            inset: 14px 18px 18px 18px;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-        }
+    .language-picker {
+      display: grid;
+      gap: 6px;
+      flex: 0 0 auto;
+      min-width: 136px;
+    }
 
-        .line-chart::before {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 420 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 18 C50 28 70 62 118 54 C166 46 180 14 228 22 C272 30 286 68 336 58 C380 50 390 28 420 34' fill='none' stroke='%2376e4f7' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
-            opacity: 0.82;
-        }
+    .language-picker label {
+      color: var(--muted);
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
 
-        .line-chart::after {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 420 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 34 C52 20 88 28 126 42 C176 60 200 62 244 48 C292 32 328 36 360 56 C386 70 404 62 420 52' fill='none' stroke='%23f6ad55' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
-            opacity: 0.8;
-        }
+    select {
+      width: 100%;
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 9px 32px 9px 10px;
+      background:
+        linear-gradient(45deg, transparent 50%, var(--ink) 50%) calc(100% - 14px) 52% / 5px 5px no-repeat,
+        linear-gradient(135deg, var(--ink) 50%, transparent 50%) calc(100% - 9px) 52% / 5px 5px no-repeat,
+        var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.9rem;
+    }
 
-        .pill {
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.10);
-            padding: 0.22rem 0.55rem;
-            font-size: 0.68rem;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-    </style>
+    .archive {
+      display: grid;
+      gap: 12px;
+    }
+
+    .entry {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 1px 0 rgba(26, 26, 24, 0.025);
+    }
+
+    .entry-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #faf7f1;
+    }
+
+    .entry-header::before {
+      width: 7px;
+      height: 7px;
+      flex: 0 0 auto;
+      border-radius: 999px;
+      background: var(--gold);
+      content: "";
+    }
+
+    .entry-header h2 {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.085em;
+      text-transform: uppercase;
+    }
+
+    .conclusions {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1.4fr;
+    }
+
+    .conclusion {
+      min-width: 0;
+      padding: 19px 18px 20px;
+    }
+
+    .conclusion + .conclusion {
+      border-left: 1px solid var(--line);
+    }
+
+    dt {
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    dd {
+      margin-top: 9px;
+      font-size: 0.96rem;
+      font-weight: 560;
+      line-height: 1.55;
+    }
+
+    .model-name {
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: min(100% - 24px, 980px);
+        padding-top: 28px;
+      }
+
+      .site-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .language-picker { width: 148px; }
+
+      .conclusions { grid-template-columns: 1fr; }
+
+      .conclusion + .conclusion {
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+    }
+  </style>
 </head>
-<body class="min-h-screen px-4 py-8 md:px-8">
-    <main class="mx-auto max-w-6xl">
-        <header class="mb-8 border-b border-[#313946] pb-7">
-            <div class="mb-4 flex flex-wrap items-center gap-3">
-                <span class="pill bg-[#20252e] text-cyan-200">XAU STUDY</span>
-                <span class="pill bg-[#20252e] text-slate-300">GitHub + Vercel Archive</span>
-                <a class="pill bg-[#171a20] text-slate-300 transition hover:text-white" href="https://github.com/cheelix/XAUStudy">GitHub</a>
-            </div>
-            <div class="grid grid-cols-1 gap-7 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-                <div>
-                    <h1 class="text-4xl font-extrabold tracking-tight text-white md:text-6xl">XAU 分析档案首页</h1>
-                    <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
-                        这里把两套黄金分析结果分开归档：Codex 分析和 Gemini 分析各自独立保存、独立展示、独立进入历史列表。
-                    </p>
-                </div>
-                <div class="line-chart" aria-hidden="true"></div>
-            </div>
-        </header>
+<body>
+  <main>
+    <header class="site-header">
+      <h1 id="page-title">XAU Analysis Archive</h1>
+      <div class="language-picker">
+        <label for="language" id="language-label">Language</label>
+        <select id="language" aria-labelledby="language-label">
+          <option value="en">English</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </header>
+    <section class="archive" id="archive" aria-live="polite"></section>
+  </main>
 
-        <section class="mb-7 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div class="card p-5">
-                <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Codex Reports</div>
-                <div class="mt-2 text-3xl font-extrabold text-cyan-200 value-mono">15</div>
-                <p class="mt-2 text-xs leading-5 text-slate-500">最新归档: 2026-07-02</p>
-            </div>
-            <div class="card p-5">
-                <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Gemini Reports</div>
-                <div class="mt-2 text-3xl font-extrabold text-amber-300 value-mono">35</div>
-                <p class="mt-2 text-xs leading-5 text-slate-500">最新归档: 2026-07-02</p>
-            </div>
-            <div class="card p-5">
-                <div class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Deployment</div>
-                <div class="mt-2 text-3xl font-extrabold text-green-300">Vercel</div>
-                <p class="mt-2 text-xs leading-5 text-slate-500">推送 GitHub 后自动部署。</p>
-            </div>
-        </section>
+  <script>
+    const translations = {
+      en: {
+        lang: "en",
+        locale: "en-CA",
+        title: "XAU Analysis Archive",
+        language: "Language",
+        model: "Model Name",
+        week: "1–2 Week Main Path & Probability",
+        month: "1–2 Month Main Path & Probability",
+        unavailable: "Not stated in the original archive"
+      },
+      ja: {
+        lang: "ja",
+        locale: "ja-JP",
+        title: "XAU 分析アーカイブ",
+        language: "言語",
+        model: "モデル名",
+        week: "今後1〜2週間の主経路と確率",
+        month: "今後1〜2か月の主経路と確率",
+        unavailable: "元のアーカイブには記載なし"
+      },
+      ko: {
+        lang: "ko",
+        locale: "ko-KR",
+        title: "XAU 분석 아카이브",
+        language: "언어",
+        model: "모델명",
+        week: "향후 1–2주 주요 경로 및 확률",
+        month: "향후 1–2개월 주요 경로 및 확률",
+        unavailable: "원본 아카이브에 명시되지 않음"
+      },
+      zh: {
+        lang: "zh-CN",
+        locale: "zh-CN",
+        title: "XAU 分析档案",
+        language: "语言",
+        model: "模型名称",
+        week: "未来 1–2 周主路径与概率",
+        month: "未来 1–2 个月主路径与概率",
+        unavailable: "原始档案未注明"
+      }
+    };
 
-        <section class="grid grid-cols-1 gap-5 lg:grid-cols-2">
-            <a class="card entry-card block p-6" href="/reports/index.html">
-                <div class="mb-5 flex items-start justify-between gap-4">
-                    <div>
-                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-cyan-200">Codex Analysis</div>
-                        <h2 class="mt-2 text-2xl font-extrabold text-white">Codex 分析</h2>
-                    </div>
-                    <span class="pill bg-cyan-950/40 text-cyan-200">进入历史列表</span>
-                </div>
-                <p class="text-sm leading-7 text-slate-400">
-                    基于本线程维护的黄金 10+3 指标模型页面。每次最新分析会保存为 `reports/YYYY-MM-DD.html`，历史列表独立管理。
-                </p>
-                <div class="mt-5 rounded-md bg-[#20252e] p-4">
-                    <div class="text-xs text-slate-500">最新状态</div>
-                    <div class="mt-1 text-sm font-extrabold text-amber-300">事件驱动冲高测压</div>
-                    <div class="mt-1 text-xs text-slate-500 value-mono">2026-07-02 | $4,123.70 | 82/100</div>
-                </div>
-            </a>
+    const reports = [
+      {
+        date: "2026-07-09",
+        time: "08:38",
+        model: "Exhaustion Rebound Test with Accumulation Confirmation",
+        text: {
+          en: { week: "Continue rebound into resistance, then pull back to confirm demand — 68%", month: "Bottom-building and broad repair range; reversal remains unconfirmed — Not stated in the original archive" },
+          ja: { week: "反発を抵抗線まで継続した後、需要確認のための押し戻し — 68%", month: "底固めと広い修復レンジ。反転は未確認 — 元のアーカイブには記載なし" },
+          ko: { week: "반등을 저항선까지 이어간 뒤 수요 확인을 위한 되돌림 — 68%", month: "바닥 형성과 넓은 회복 박스권. 반전은 미확인 — 원본 아카이브에 명시되지 않음" },
+          zh: { week: "反弹延续至压力区，随后回踩确认承接 — 68%", month: "底部构造和宽幅修复震荡；中期反转仍未确认 — 原始档案未注明" }
+        }
+      },
+      {
+        date: "2026-07-07",
+        time: "20:22",
+        model: "Oversold Relief Test with Bearish Volume Confirmation",
+        text: {
+          en: { week: "Test resistance and support, then pull back for confirmation — 62%", month: "$3,950–$4,335 broad range; repair remains insufficient — Not stated in the original archive" },
+          ja: { week: "抵抗線と支持線をテストした後、確認のために押し戻す — 62%", month: "$3,950〜$4,335の広いレンジ。修復はなお不十分 — 元のアーカイブには記載なし" },
+          ko: { week: "저항과 지지선을 시험한 뒤 확인을 위한 되돌림 — 62%", month: "$3,950–$4,335의 넓은 박스권. 회복은 여전히 부족 — 원본 아카이브에 명시되지 않음" },
+          zh: { week: "反复测试压力与承接，随后回踩确认 — 62%", month: "$3,950–$4,335 的宽幅震荡；结构修复仍不足 — 原始档案未注明" }
+        }
+      },
+      {
+        date: "2026-07-02",
+        time: "19:40",
+        model: "Event-Driven Resistance Spike Retest",
+        text: {
+          en: { week: "Pull back to confirm support after a failed resistance break — 63%", month: "Broad range and weak repair after pressure repricing; reversal remains unconfirmed — Not stated in the original archive" },
+          ja: { week: "抵抗線の突破失敗後、支持確認のために押し戻す — 63%", month: "圧力再評価後の広いレンジと弱い修復。反転は未確認 — 元のアーカイブには記載なし" },
+          ko: { week: "저항 돌파 실패 후 지지 확인을 위한 되돌림 — 63%", month: "압력 재평가 이후의 넓은 박스권과 약한 회복. 반전은 미확인 — 원본 아카이브에 명시되지 않음" },
+          zh: { week: "压力未破后回踩确认承接 — 63%", month: "压力重定价后的宽幅震荡和弱修复；中期反转仍未确认 — 原始档案未注明" }
+        }
+      },
+      {
+        date: "2026-07-01",
+        time: "19:40",
+        model: "Resistance Retest with Confirmation Deficit",
+        text: {
+          en: { week: "Test resistance, then pull back to confirm support — 60%", month: "Broad range and weak repair after pressure repricing; reversal remains unconfirmed — Not stated in the original archive" },
+          ja: { week: "抵抗線を試した後、支持確認のために押し戻す — 60%", month: "圧力再評価後の広いレンジと弱い修復。反転は未確認 — 元のアーカイブには記載なし" },
+          ko: { week: "저항을 시험한 뒤 지지 확인을 위한 되돌림 — 60%", month: "압력 재평가 이후의 넓은 박스권과 약한 회복. 반전은 미확인 — 원본 아카이브에 명시되지 않음" },
+          zh: { week: "先测试压力，随后回踩确认承接 — 60%", month: "压力重定价后的宽幅震荡和弱修复；中期反转仍未确认 — 原始档案未注明" }
+        }
+      },
+      {
+        date: "2026-06-30",
+        time: "19:40",
+        model: "Support Sweep with Weak Relief Retest",
+        text: {
+          en: { week: "Low-range consolidation with a weak rebound test — 62%", month: "Low-range repricing, broad range, or weak recovery; reversal remains unconfirmed — Not stated in the original archive" },
+          ja: { week: "低位レンジでの持ち合いと弱い反発テスト — 62%", month: "低位での再評価、広いレンジ、または弱い回復。反転は未確認 — 元のアーカイブには記載なし" },
+          ko: { week: "저점 박스권 횡보와 약한 반등 테스트 — 62%", month: "저점 재평가, 넓은 박스권 또는 약한 회복. 반전은 미확인 — 원본 아카이브에 명시되지 않음" },
+          zh: { week: "低位震荡并尝试弱反抽测试 — 62%", month: "低位重定价、宽幅震荡或弱势修复；中期反转仍未确认 — 原始档案未注明" }
+        }
+      },
+      {
+        date: "2026-06-29",
+        time: "17:21",
+        model: "Failed Relief Rally with Secondary Support Test",
+        text: {
+          en: { week: "Retest support, then enter a base range or weak rebound — 64%", month: "Low-range repricing, broad range, or weak recovery; reversal remains unconfirmed — Not stated in the original archive" },
+          ja: { week: "支持線を再テストした後、低位レンジまたは弱い反発へ — 64%", month: "低位での再評価、広いレンジ、または弱い回復。反転は未確認 — 元のアーカイブには記載なし" },
+          ko: { week: "지지선을 재시험한 뒤 저점 박스권 또는 약한 반등 — 64%", month: "저점 재평가, 넓은 박스권 또는 약한 회복. 반전은 미확인 — 원본 아카이브에 명시되지 않음" },
+          zh: { week: "二次测试支撑后进入低位震荡或弱反抽 — 64%", month: "低位重定价、宽幅震荡或弱势修复；中期反转仍未确认 — 原始档案未注明" }
+        }
+      },
+      {
+        date: "2026-06-26",
+        time: "09:36",
+        model: "Post-Breakdown Relief Rally Into Resistance",
+        text: {
+          en: { week: "Oversold bounce into resistance, then weak range trading — 61%", month: "Weak recovery, broad range, or low-range repricing; reversal remains unconfirmed — Not stated in the original archive" },
+          ja: { week: "売られ過ぎ反発で抵抗線を試した後、弱いレンジ推移 — 61%", month: "弱い回復、広いレンジ、または低位での再評価。反転は未確認 — 元のアーカイブには記載なし" },
+          ko: { week: "과매도 반등으로 저항을 시험한 뒤 약세 박스권 — 61%", month: "약한 회복, 넓은 박스권 또는 저점 재평가. 반전은 미확인 — 원본 아카이브에 명시되지 않음" },
+          zh: { week: "超卖反抽测试压力后进入弱势震荡 — 61%", month: "弱势修复、宽幅震荡或低位重定价；中期反转仍未确认 — 原始档案未注明" }
+        }
+      },
+      {
+        date: "2026-06-25",
+        time: "10:32",
+        model: "Post-Breakdown Relief Retest",
+        text: {
+          en: { week: "Bounce to test resistance, then weak range trading — 62%", month: "Weak recovery, broad range, or low-range repricing; reversal remains unconfirmed — Not stated in the original archive" },
+          ja: { week: "反発で抵抗線を試した後、弱いレンジ推移 — 62%", month: "弱い回復、広いレンジ、または低位での再評価。反転は未確認 — 元のアーカイブには記載なし" },
+          ko: { week: "반등으로 저항을 시험한 뒤 약세 박스권 — 62%", month: "약한 회복, 넓은 박스권 또는 저점 재평가. 반전은 미확인 — 원본 아카이브에 명시되지 않음" },
+          zh: { week: "反抽测试压力后进入弱势震荡 — 62%", month: "弱势修复、宽幅震荡或低位重定价；中期反转仍未确认 — 原始档案未注明" }
+        }
+      },
+      {
+        date: "2026-06-24",
+        time: "14:12",
+        model: "Capitulation Test with Oversold Deviation",
+        text: {
+          en: { week: "Technical bounce or base-building, then renewed pressure — 65%", month: "Weak recovery, broad range, or low-range repricing; reversal remains unconfirmed — Not stated in the original archive" },
+          ja: { week: "テクニカル反発または底固めの後、再び下押し — 65%", month: "弱い回復、広いレンジ、または低位での再評価。反転は未確認 — 元のアーカイブには記載なし" },
+          ko: { week: "기술적 반등 또는 바닥 다지기 후 재차 압력 — 65%", month: "약한 회복, 넓은 박스권 또는 저점 재평가. 반전은 미확인 — 원본 아카이브에 명시되지 않음" },
+          zh: { week: "技术性反抽或低位震荡后再次承压 — 65%", month: "弱势修复、宽幅震荡或低位重定价；中期反转仍未确认 — 原始档案未注明" }
+        }
+      },
+      {
+        date: "2026-06-23",
+        time: "11:18",
+        model: "Failed Retest with Secondary Support Test",
+        text: {
+          en: { week: "Second support test / weak range trading — 48%", month: "Weak recovery or broad range; reversal remains unconfirmed — Not stated in the original archive" },
+          ja: { week: "二次支持線のテスト／弱いレンジ推移 — 48%", month: "弱い回復または広いレンジ。反転は未確認 — 元のアーカイブには記載なし" },
+          ko: { week: "2차 지지선 테스트 / 약세 박스권 — 48%", month: "약한 회복 또는 넓은 박스권. 반전은 미확인 — 원본 아카이브에 명시되지 않음" },
+          zh: { week: "二次支撑检验／弱势震荡 — 48%", month: "弱势修复或宽幅震荡；中期反转仍未确认 — 原始档案未注明" }
+        }
+      }
+    ];
 
-            <a class="card entry-card block p-6" href="/gemini/reports/index.html">
-                <div class="mb-5 flex items-start justify-between gap-4">
-                    <div>
-                        <div class="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">Gemini Analysis</div>
-                        <h2 class="mt-2 text-2xl font-extrabold text-white">Gemini 分析</h2>
-                    </div>
-                    <span class="pill bg-amber-950/40 text-amber-200">进入历史列表</span>
-                </div>
-                <p class="text-sm leading-7 text-slate-400">
-                    来自“预览gemini结果”线程的 HTML 分析页面。正文文件原样保留在 `gemini/reports/`，不覆盖 Codex 页面。
-                </p>
-                <div class="mt-5 rounded-md bg-[#20252e] p-4">
-                    <div class="text-xs text-slate-500">最新状态</div>
-                    <div class="mt-1 text-sm font-extrabold text-amber-300">Breakout Squeeze / 轧空主升浪</div>
-                    <div class="mt-1 text-xs text-slate-500 value-mono">2026-07-02 | $4,188.935 | 94%</div>
-                </div>
-            </a>
-        </section>
+    const language = document.querySelector("#language");
+    const archive = document.querySelector("#archive");
+    const pageTitle = document.querySelector("#page-title");
+    const languageLabel = document.querySelector("#language-label");
 
-        <footer class="mt-8 border-t border-[#313946] pt-5 text-center text-[11px] leading-6 text-slate-600">
-            XAUStudy keeps Codex and Gemini reports in separate folders so each analysis track can be reviewed independently.
-        </footer>
-    </main>
+    function formatDateTime(date, time, locale) {
+      return new Intl.DateTimeFormat(locale, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        timeZone: "UTC"
+      }).format(new Date(date + "T00:00:00Z")) + " · " + time;
+    }
+
+    function render(selectedLanguage) {
+      const t = translations[selectedLanguage];
+      document.documentElement.lang = t.lang;
+      document.title = t.title;
+      pageTitle.textContent = t.title;
+      languageLabel.textContent = t.language;
+
+      archive.replaceChildren(...reports.map((report) => {
+        const item = report.text[selectedLanguage];
+        const article = document.createElement("article");
+        article.className = "entry";
+
+        const header = document.createElement("header");
+        header.className = "entry-header";
+        const heading = document.createElement("h2");
+        heading.textContent = formatDateTime(report.date, report.time, t.locale);
+        header.append(heading);
+
+        const conclusions = document.createElement("dl");
+        conclusions.className = "conclusions";
+        const fields = [
+          [t.model, report.model, "model-name"],
+          [t.week, item.week, ""],
+          [t.month, item.month, ""]
+        ];
+
+        fields.forEach(([label, value, valueClass]) => {
+          const field = document.createElement("div");
+          field.className = "conclusion";
+          const term = document.createElement("dt");
+          term.textContent = label;
+          const description = document.createElement("dd");
+          description.textContent = value;
+          if (valueClass) description.className = valueClass;
+          field.append(term, description);
+          conclusions.append(field);
+        });
+
+        article.append(header, conclusions);
+        return article;
+      }));
+    }
+
+    let savedLanguage = "en";
+    try {
+      savedLanguage = localStorage.getItem("xau-archive-language") || "en";
+    } catch (_) {}
+
+    language.value = translations[savedLanguage] ? savedLanguage : "en";
+    render(language.value);
+
+    language.addEventListener("change", () => {
+      render(language.value);
+      try {
+        localStorage.setItem("xau-archive-language", language.value);
+      } catch (_) {}
+    });
+  </script>
 </body>
 </html>

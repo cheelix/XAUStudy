@@ -6,8 +6,7 @@ It is intentionally separate from AI-generated report pages and earlier generic
 data folders:
 
 - Python data and calculations: `python-data-store`, `python-data-runs`.
-- Codex report HTML pages: `reports`.
-- Gemini report HTML pages: `gemini/reports`.
+- XAU analysis archive: `index.html`.
 - Earlier generic folders: `data-store`, `data-runs`.
 
 Each Python run creates one Calgary-time folder:
